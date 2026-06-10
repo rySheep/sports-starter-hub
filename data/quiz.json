@@ -1,0 +1,10 @@
+{
+  "f1": [
+    {"q": "F1 賽車比賽中，若揮舞「黃旗」代表什麼意思？", "options": ["比賽結束", "前方有危險，減速且禁止超車", "車輛進站", "賽道上有碎屑"], "ans": 1},
+    {"q": "下列哪位車手擁有 7 次 F1 世界冠軍？", "options": ["Max Verstappen", "Lewis Hamilton", "Charles Leclerc", "Lando Norris"], "ans": 1}
+  ],
+  "mlb": [
+    {"q": "大聯盟比賽中，一個標準棒球場總共有幾個壘包？", "options": ["2個", "3個", "4個", "5個"], "ans": 2},
+    {"q": "「棒球之神」是指哪一位傳奇大聯盟球星？", "options": ["Babe Ruth", "Shohei Ohtani", "Mike Trout", "Ichiro Suzuki"], "ans": 0}
+  ]
+}

@@ -1,0 +1,42 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f9;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1a252f;
+    color: white;
+    padding: 15px 30px;
+}
+.nav-links button, .sport-buttons button {
+    background: #34495e;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.nav-links button:hover, .sport-buttons button:hover {
+    background: #18bc9c;
+}
+.container {
+    padding: 30px;
+}
+/* 核心：控制頁籤隱藏與顯示 */
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+.card {
+    background: white;
+    padding: 20px;
+    margin: 15px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}

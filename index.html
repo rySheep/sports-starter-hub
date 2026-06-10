@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>綜合體育狂熱樞紐 Sports Hub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🥇 Sports Hub</div>
+        <div class="nav-links">
+            <button onclick="switchTab('wiki')">歷史維基</button>
+            <button onclick="switchTab('article')">科普專欄</button>
+            <button onclick="switchTab('quiz')">小小測驗王</button>
+            <button onclick="switchTab('calendar')">賽程行事曆</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="wiki-tab" class="tab-content active">
+            <h2>🏆 體育歷史維基</h2>
+            <div class="sport-buttons">
+                <button onclick="loadWiki('f1')">🏎️ F1 賽車</button>
+                <button onclick="loadWiki('mlb')">⚾ MLB 大聯盟</button>
+            </div>
+            <div id="wiki-display" class="card-container">
+                <p>請選擇想查詢的運動項目</p>
+            </div>
+        </section>
+
+        <section id="article-tab" class="tab-content">
+            <h2>✍️ 體育科普專欄</h2>
+            <p>專欄內容正在籌備中...</p>
+        </section>
+
+        <section id="quiz-tab" class="tab-content">
+            <h2>🧠 小小測驗王</h2>
+            <p>測驗題庫載入中...</p>
+        </section>
+
+        <section id="calendar-tab" class="tab-content">
+            <h2>📅 當月賽程行事曆</h2>
+            <p>賽程表建置中...</p>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

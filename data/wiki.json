@@ -1,0 +1,10 @@
+{
+  "f1": [
+    {"title": "最年輕站上頒獎台的車手", "holder": "Max Verstappen", "detail": "在 2016 年西班牙大獎賽以 18 歲又 228 天的年紀奪冠。"},
+    {"title": "歷史最多世界冠軍車手", "holder": "Michael Schumacher & Lewis Hamilton", "detail": "兩人共同保持 7 次世界冠軍的歷史紀錄。"}
+  ],
+  "mlb": [
+    {"title": "現代棒球歷史最多連敗隊伍", "holder": "巴爾的摩金鶯 (1988年)", "detail": "創下開季 21 連敗的慘烈紀錄。"},
+    {"title": "單季最多全壘打紀錄保持人", "holder": "Barry Bonds", "detail": "在 2001 年賽季瘋狂轟出 73 支全壘打。"}
+  ]
+}
