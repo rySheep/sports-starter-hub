@@ -1,3 +1,8 @@
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
 :root {
     --bg-color: #f4f6f9;
     --text-main: #2c3e50;
@@ -25,6 +30,8 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    scroll-snap-align: start; /* 新增這行：讓畫面對齊這裡的頂部 */
+    scroll-snap-stop: always; /* 新增這行：強制停在此處，避免一次滑過頭 */
 }
 .split {
     flex: 1;
@@ -83,6 +90,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    scroll-snap-align: start; /* 新增這行：往下捲動時會剛好卡在導覽列的最上方 */
 }
 .navbar .logo { font-size: 1.5rem; font-weight: bold; }
 .navbar button {
@@ -158,31 +166,40 @@ body {
 }
 
 .story-content {
-    position: relative;
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
     z-index: 2;
-    max-width: 800px;
+    max-width: 550px;
     padding: 50px;
-    background: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(12px); 
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    text-align: left;
+    background: transparent; 
+    backdrop-filter: none; 
+    border: none;
+    box-shadow: none;
+    
     animation: slideUpFade 1s ease-out forwards;
+    scrollbar-width: none;
 }
 
-.story-year {
-    display: inline-block;
-    background: var(--f1-color);
-    padding: 8px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(225, 6, 0, 0.4);
+.story-content::-webkit-scrollbar {
+    display: none;
+}
+/* 確保裡面的標題跟內文維持清楚的陰影與排版 */
+.story-content h3 { 
+    font-size: 2.5rem; 
+    margin-top: 0; 
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+    color: white;
 }
 
-.story-content h3 { font-size: 2.8rem; margin-top: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-.story-content p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 25px; text-align: justify; }
+.story-content p { 
+    font-size: 1.15rem; 
+    line-height: 1.8; 
+    margin-bottom: 20px; 
+    color: #f4f6f9;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
+}
 
 .story-fun-fact { 
     background: rgba(255, 193, 7, 0.15); 
@@ -208,4 +225,44 @@ body {
 @keyframes slideUpFade {
     from { opacity: 0; transform: translateY(40px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* 1. 覆蓋原始設定，讓主內容區強制變成 100% 滿版全螢幕 */
+#main-content.container {
+    max-width: 100vw;  
+    padding: 0;        
+    margin: 0;
+    height: calc(100vh - 66px); 
+    overflow-y: auto;           
+    scrollbar-width: none;      
+}
+#main-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* 2. 替換故事容器 (移除舊的 margin 負邊距，因為外層已經是滿版了) */
+.story-container {
+    width: 100vw;
+    height: calc(100vh - 66px);
+    margin: 0; 
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none; 
+}
+.story-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* 3. 新增：幫其他「不需要全螢幕」的內容 (MLB、測驗王、賽程) 重新加上置中與安全範圍 */
+#wiki-title, #article-tab, #quiz-tab, #calendar-tab, .card-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* 讓非全螢幕頁面的標題維持美觀的距離 */
+#wiki-title, #quiz-title, #calendar-tab h2, #article-tab h2 {
+    margin-top: 40px;
+    text-align: center;
 }
