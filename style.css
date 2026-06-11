@@ -8,7 +8,11 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-
+html {
+    scroll-behavior: smooth;
+    /* 開啟 Y 軸的強制滾動吸附 */
+    scroll-snap-type: y mandatory; 
+}
 body {
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
@@ -25,6 +29,8 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+
+    scroll-snap-align: start;
 }
 .split {
     flex: 1;
@@ -83,6 +89,8 @@ body {
     position: sticky; /* 讓導覽列滾動時吸頂 */
     top: 0;
     z-index: 100;
+
+    scroll-snap-align: start;
 }
 .navbar .logo { font-size: 1.5rem; font-weight: bold; }
 .navbar button {
@@ -98,6 +106,32 @@ body {
 
 /* === 內容區與卡片 === */
 .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+/* 覆蓋原始設定，讓主內容區強制變成 100% 滿版全螢幕 */
+#main-content.container {
+    max-width: 100vw;  
+    padding: 0;        
+    margin: 0;
+    height: calc(100vh - 66px); 
+    overflow-y: auto;           
+    scrollbar-width: none;      
+}
+#main-content::-webkit-scrollbar { display: none; }
+
+/* 幫其他「不需要全螢幕」的內容重新加上置中與安全範圍 */
+#wiki-title,  #quiz-tab, #calendar-tab, .card-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* 讓非全螢幕頁面的標題維持美觀的距離 */
+#wiki-title, #quiz-title, #calendar-tab h2, #article-tab h2 {
+    margin-top: 40px;
+    text-align: center;
+}
+
 .tab-content { display: none; animation: fadeIn 0.4s ease; }
 .tab-content.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -132,17 +166,11 @@ body {
 /* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
 
 .story-container {
-    /* 突破左右寬度限制 */
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
+    /* 1. 將寬度設為 100% 即可，因為父容器已經是 100vw 了 */
+    width: 100%;
     
-    /* 突破上下 padding 限制 (抵消 .container 原本的 40px 空白) */
-    margin-top: -40px;
-    margin-bottom: -40px;
-    
-    /* 高度設定為：100% 螢幕高度 減去 上方導覽列的大約高度(65px) */
-    height: calc(100vh - 65px);
-    
+    /* 3. 確保高度完美配合導覽列 (66px) */
+    height: calc(100vh - 66px);
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none; 
@@ -152,78 +180,99 @@ body {
     display: none;
 }
 
+/* === 沉浸式全螢幕簡報設計 (修改為靠右對齊電影感風格) === */
+
+/* === 沉浸式全螢幕簡報設計 (完全還原圖片排版風格) === */
+
 .story-slide {
-    /* 每一頁的高度也必須配合扣除導覽列，這樣滑動時才會完美貼合 */
-    height: calc(100vh - 65px);
+    height: calc(100vh - 66px); /* 扣除導覽列高度 */
     width: 100vw;
     scroll-snap-align: start;
     display: flex;
-    justify-content: center;
+    /* 🌟 關鍵：將內容區域推向最右側 */
+    justify-content: flex-end; 
     align-items: center;
     position: relative;
     color: white;
-    text-align: center;
     background-position: center;
     background-size: cover;
     background-attachment: fixed; 
 }
 
-/* 加上深色漸層遮罩，確保白字在任何圖片上都清晰可見 */
+/* 🌟 漸層遮罩：左邊完全透明保留照片細節，右邊轉為深黑色襯托文字 */
 .story-slide::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.9) 100%);
     z-index: 1;
 }
 
+/* === 調整文字區塊寬度與邊距 === */
 .story-content {
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    padding: 50px;
-    /* 製作蘋果風格的毛玻璃黑底框 */
-    background: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(12px); 
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    /* 加入進場動畫 */
+    max-width: 460px; /* 🌟 縮小文字區塊的最大寬度 (從 550px 降到 460px) */
+    margin-right: 12vw; /* 🌟 增加右側留白，讓畫面更有呼吸感 */
+    text-align: left; 
+    background: transparent; 
+    backdrop-filter: none; 
+    border: none;
+    box-shadow: none;
+    padding: 0;
     animation: slideUpFade 1s ease-out forwards;
 }
 
+/* === 年代文字：強制消除 JS 寫死的紅色背景 === */
 .story-year {
-    display: inline-block;
-    background: var(--f1-color);
-    padding: 8px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    letter-spacing: 2px;
+    display: block; 
+    background: transparent !important; /* 🌟 加上 !important 強制覆蓋 JS 的紅色背景 */
+    box-shadow: none !important;        /* 🌟 強制覆蓋 JS 的陰影 */
+    padding: 0 !important;
+    font-size: 0.9rem; /* 字體再縮小 */
+    font-weight: normal;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    color: #e0e0e0; 
+}
+
+/* === 縮小標題字級 === */
+.story-content h3 { 
+    font-size: 2.2rem; /* 🌟 從 2.8rem 縮小到 2.2rem */
+    margin-top: 0; 
     margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(225, 6, 0, 0.4);
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8); 
 }
 
-.story-content h3 { font-size: 2.8rem; margin-top: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-.story-content p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 25px; text-align: justify; }
+/* === 縮小內文字級 === */
+.story-content p { 
+    font-size: 0.95rem; /* 🌟 從 1.1rem 縮小到 0.95rem */
+    line-height: 1.8; 
+    margin-bottom: 25px; 
+    color: rgba(255, 255, 255, 0.85);
+    text-align: justify; 
+}
 
+/* === 縮小趣事區塊與字體 === */
 .story-fun-fact { 
-    background: rgba(255, 193, 7, 0.15); 
-    border-left: 4px solid #ffc107; 
-    padding: 15px 20px; 
-    border-radius: 0 10px 10px 0; 
+    background: rgba(40, 40, 40, 0.65); 
+    border-left: 4px solid #f1c40f; 
+    padding: 15px 18px; /* 稍微縮減內邊距 */
+    border-radius: 4px; 
     text-align: left; 
-    font-size: 1rem;
-    color: #ffd54f;
+    font-size: 0.85rem; /* 🌟 字體縮小 */
+    line-height: 1.6;
+    color: #f1c40f;
 }
 
-/* 向下滑動提示小箭頭 */
+/* 底部置中的下滑箭頭 */
 .slide-arrow {
     position: absolute;
     bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 2rem;
-    color: rgba(255,255,255,0.7);
+    font-size: 1.5rem;
+    color: rgba(255,255,255,0.6);
     z-index: 2;
     animation: bounce 2s infinite;
 }
@@ -279,3 +328,67 @@ body {
     margin-left: 5px; 
     color: #7f8c8d; 
 }
+.score-details p { font-size: 1.3rem; font-weight: bold; margin: 10px 0; }
+.score-comment { color: #7f8c8d; font-size: 1.1rem; margin-top: 20px; }
+
+/* === ✍️ 科普專欄：三分割入口樞紐 === */
+.article-hub {
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 66px); /* 完美貼合螢幕剩餘高度 */
+}
+
+.article-hub .split {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer; /* 讓整個區塊變成可點擊 */
+}
+
+/* 滑鼠懸停時，該區塊放大展開 */
+.article-hub .split:hover { flex: 1.6; }
+
+/* 加上暗色漸層遮罩，確保文字清晰 */
+.article-hub .split::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    z-index: 1;
+    transition: 0.4s ease;
+}
+.article-hub .split:hover::before {
+    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+}
+
+.article-hub .content { z-index: 2; position: relative; color: white; }
+.article-hub .content h2 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
+.article-hub .content p { font-size: 1.2rem; opacity: 0.8; }
+
+/* 背景圖片設定 (請確保你有這些本機圖片) */
+.bg-tech { background: url('./images/f1 tech.jpg') center/cover; }
+.bg-rules { background: url('./images/f1 rule.jpg') center/cover; }
+.bg-records { background: url('./images/f1 reco.jpg') center/cover; }
+
+/* === 沉浸式頁面內的懸浮返回按鈕 === */
+.floating-back-btn {
+    position: absolute; /* 🌟 關鍵：從 fixed 改成 absolute */
+    top: 20px;          /* 稍微往上移，貼齊邊緣 */
+    left: 30px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+.floating-back-btn:hover { background: var(--f1-color); transform: translateX(-5px); }

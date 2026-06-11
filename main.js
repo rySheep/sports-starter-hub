@@ -147,6 +147,25 @@ function loadWiki() {
 
     display.appendChild(storyContainer);
 }
+const f1ArticleData = {
+    tech: [
+        { title: "跨世代引擎與動力單元", desc: "引擎是 F1 的心臟。從 2000 年代初高達 19,000 轉、發出高亢尖嘯的 3.0升 V10 自然進氣引擎（約900匹馬力），演進到今日的 1.6升 V6 渦輪增壓油電混合動力單元（Power Unit）。現代 F1 引擎熱效率超過 50%，結合內燃機與動能回收（MGU-K）、熱能回收（MGU-H）及高壓電池，綜效馬力突破 1,000 匹，擁有極致驚人的紐矩輸出，是人類史上最先進的科技結晶。", img: "./images/f1 engine.jpg" },
+        { title: "特製輪胎與賽道策略", desc: "F1 全面採用 Pirelli 18吋特製輪胎。乾地使用「光頭胎 (Slicks)」，分為 C1(最硬) 到 C5(最軟)，軟胎抓地力極強但壽命短暫。雨天則有「半雨胎 (綠底)」與「全雨胎 (藍底)」，全雨胎在時速 300 公里下每秒可排開 85 公升的積水！車手在正賽中必須至少使用兩種不同配方的乾胎，進站換胎時機往往是決定勝負的關鍵。", img: "./images/f1 tires.jpg" },
+        { title: "航空級空氣動力學", desc: "F1 的空力設計與戰鬥機機翼原理正好「相反」。飛機機翼用來產生升力，而 F1 的前翼與尾翼則利用空氣產生向下的「下壓力」，在高速過彎時把車身死死壓在賽道上（承受高達 5G 側向力）。尾翼更配有 DRS 減阻系統，在直線上打開翼片能降低阻力，換取 15km/h 的尾速優勢以利超車。", img: "./images/f1 aero.jpg" },
+        { title: "HALO 神級防護系統", desc: "2018 年強制引入的「人」字型頭部防護架。由航太級鈦合金製成，重量僅約 7 公斤，卻能承受高達 12 噸的靜態衝擊力——這相當於把一台倫敦雙層巴士壓在上方也不會變形！它在無數次翻車與重疊碰撞中擋下致命碎片，是現代賽車安全的絕對核心。", img: "./images/f1 halo.jpg" },
+        { title: "方向盤與純機械轉向", desc: "為了感受最直接的路面反饋，F1 堅持使用無動力輔助的「純機械轉向」，車手需要極大的臂力才能過彎。價值五萬美金以上的碳纖維方向盤佈滿旋鈕與液晶螢幕，讓車手能在時速 300 公里的極限環境下，以純手動調整煞車分配比、差速器鎖定與電池釋放模式。", img: "./images/f1 steering.jpg" }
+    ],
+    rules: [
+        { title: "賽事週末流程", desc: "標準賽事分為三天：週五進行兩次自由練習（FP1、FP2），讓車隊測試車輛設定；週六進行 FP3 與「排位賽（Qualifying）」，排位賽採 Q1、Q2、Q3 三階段淘汰制，決出正賽的起跑順位；週日則是令人血脈賁張的正賽（Race），距離通常約為 305 公里。", img: "./images/f1 rule 1.jpg" },
+        { title: "旗號系統與安全車", desc: "賽道以旗幟傳遞訊息：黃旗代表前方危險需減速禁超車；紅旗代表比賽因事故完全中斷；藍旗警告慢車需讓路給即將套圈的快車。發生重大事故但無需暫停時，會出動「安全車 (Safety Car)」，全場賽車必須跟在它後方減速繞行，嚴禁超車。", img: "./images/f1 rule 2.jpg" },
+        { title: "積分分配制度", desc: "正賽前 10 名完賽的車手可獲得積分，依序為：25, 18, 15, 12, 10, 8, 6, 4, 2, 1 分。此外，若在前 10 名內完賽且跑出單場「最快單圈」，可額外獲 1 分。車手與所屬車隊將同時累計，爭奪年度車手總冠軍與車隊總冠軍。", img: "./images/f1 rule 3.jpg" }
+    ],
+    records: [
+        { title: "歷史最年輕分站冠軍", desc: "紀錄保持人：Max Verstappen。2016 年西班牙大獎賽，年僅 18 歲又 228 天的他在升上 Red Bull 車隊的第一場比賽就奇蹟般奪下冠軍，寫下難以跨越的超年輕紀錄。", img: "./images/f1 rec max.jpg" },
+        { title: "歷史最年輕世界冠軍", desc: "紀錄保持人：Sebastian Vettel。2010 年，23 歲又 134 天的 Vettel 駕駛 Red Bull 賽車在收官戰逆轉奪下年度總冠軍，開啟了他的四連霸王朝。", img: "./images/f1 rec sab.jpg" },
+        { title: "歷史最多世界冠軍車手", desc: "紀錄保持人：Michael Schumacher 與 Lewis Hamilton。兩位跨時代的傳奇各自拿下了高達 7 次的世界冠軍。舒馬克主宰了千禧年初的紅色王朝，漢米爾頓則統治了 2010 年代的油電混合時代。", img: "./images/f1 rec lou mai.jpg" }
+    ]
+};
 
 // ================= 升級版測驗題庫 =================
 // ================= 3大種類各 8 題的黃金題庫 =================
@@ -326,6 +345,7 @@ function shuffleArray(arr) {
 // ================= 2. 狀態與控制邏輯 =================
 let currentSport = 'f1'; 
 let currentTab = 'wiki'; 
+let currentArticleSubTab = null; // 🌟 紀錄目前在科普專欄的哪個分區 (tech, rules, records)
 
 function enterSport(sport) {
     setSport(sport);
@@ -359,8 +379,90 @@ function switchTab(tabName) {
         currentQuizCategory = null; // 🌟 每次點擊導覽列切換到「小小測驗王」時，都先清空題目，讓使用者重新選
         loadQuiz();
     }
+    if (tabName === 'article') {
+        currentArticleSubTab = null; 
+        loadArticle();
+    }
 }
 
+
+function loadArticle() {
+    const display = document.getElementById('article-tab');
+    display.innerHTML = ''; 
+
+    if (currentSport === 'mlb') {
+        display.innerHTML = '<h2 style="text-align:center; margin-top:40px;">✍️ MLB 體育科普專欄</h2><p style="text-align:center;">MLB 專欄內容正在籌備中，敬請期待...</p>';
+        return;
+    }
+
+    // === F1 科普專欄邏輯 ===
+    if (currentArticleSubTab === null) {
+        // 狀態 1：渲染三分割首頁入口
+        display.innerHTML = `
+            <div class="article-hub">
+                <div class="split bg-tech" onclick="enterArticleSub('tech')">
+                    <div class="content">
+                        <h2> 技術核心</h2>
+                        <p>引擎、空力、輪胎與科技</p>
+                    </div>
+                </div>
+                <div class="split bg-rules" onclick="enterArticleSub('rules')">
+                    <div class="content">
+                        <h2> 賽制規則</h2>
+                        <p>旗號、週末流程與積分</p>
+                    </div>
+                </div>
+                <div class="split bg-records" onclick="enterArticleSub('records')">
+                    <div class="content">
+                        <h2> 榮耀紀錄</h2>
+                        <p>神級數據與傳奇名將</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    } else {
+        // 狀態 2：渲染沉浸式滿版展示
+        const data = f1ArticleData[currentArticleSubTab];
+        
+        // 🌟 新增：確保外層畫布是相對定位，讓返回按鈕可以準確定位在左上角
+        display.style.position = 'relative'; 
+
+        // 建立返回按鈕
+        const backBtn = document.createElement('button');
+        backBtn.className = 'floating-back-btn';
+        backBtn.innerText = '← 返回科普大廳';
+        backBtn.onclick = () => {
+            currentArticleSubTab = null;
+            loadArticle();
+        };
+        // 🌟 關鍵修改：把按鈕直接加在 display (#article-tab) 上，而不是加在會滾動的容器裡
+        display.appendChild(backBtn); 
+
+        // 建立全螢幕滾動容器
+        const storyContainer = document.createElement('div');
+        storyContainer.className = 'story-container';
+
+        data.forEach((item, index) => {
+            const arrowHtml = index === data.length - 1 ? '' : '<div class="slide-arrow">↓</div>';
+            storyContainer.innerHTML += `
+                <div class="story-slide" style="background-image: url('${item.img}');">
+                    <div class="story-content">
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                    ${arrowHtml}
+                </div>
+            `;
+        });
+        display.appendChild(storyContainer);
+    }
+}
+
+function enterArticleSub(subTab) {
+    currentArticleSubTab = subTab;
+    loadArticle();
+}
+// ================= 3. 渲染資料函數 =================
 // ================= 3. 渲染資料函數 =================
 // ================= 3. 渲染資料函數 =================
 // ================= 3. 渲染資料函數 =================
@@ -369,17 +471,13 @@ function loadWiki() {
     const title = document.getElementById('wiki-title');
     display.innerHTML = ''; 
 
-    // 隱藏原本的標題，全螢幕展示不需要原本的傳統標題
     title.style.display = 'none'; 
 
-    // 建立全螢幕滾動容器
     const storyContainer = document.createElement('div');
     storyContainer.className = 'story-container';
 
-    // 🌟 直接根據當前的運動項目，抓取對應的歷史年代資料
     const currentHistory = currentSport === 'f1' ? f1History : mlbHistory;
 
-    // 動態生成每一個年代的「全螢幕頁面」（已經把經典紀錄封面刪除了）
     currentHistory.forEach((era, index) => {
         const arrowHtml = index === currentHistory.length - 1 ? '' : '<div class="slide-arrow">↓</div>';
         
@@ -398,6 +496,7 @@ function loadWiki() {
 
     display.appendChild(storyContainer);
 }
+// ⚠️ 請確保往下滾動時，沒有第二個 function loadWiki() 出現，有的話請刪除！
 
 // ====== 功能 3：最新賽程表 (讀取 schedule.json 資料) ======
 function loadSchedule(sportType) {
