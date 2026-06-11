@@ -1,8 +1,3 @@
-html {
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-}
-
 :root {
     --bg-color: #f4f6f9;
     --text-main: #2c3e50;
@@ -21,7 +16,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    scroll-behavior: smooth; /* 讓錨點滾動變得平滑 */
 }
 
 /* === 第一屏：分割畫面 === */
@@ -30,8 +25,6 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
-    scroll-snap-align: start; 
-    scroll-snap-stop: always; 
 }
 .split {
     flex: 1;
@@ -87,10 +80,9 @@ body {
     background-color: #1a252f;
     color: white;
     padding: 15px 30px;
-    position: sticky;
+    position: sticky; /* 讓導覽列滾動時吸頂 */
     top: 0;
     z-index: 100;
-    scroll-snap-align: start; 
 }
 .navbar .logo { font-size: 1.5rem; font-weight: bold; }
 .navbar button {
@@ -106,32 +98,6 @@ body {
 
 /* === 內容區與卡片 === */
 .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
-
-/* 覆蓋原始設定，讓主內容區強制變成 100% 滿版全螢幕 */
-#main-content.container {
-    max-width: 100vw;  
-    padding: 0;        
-    margin: 0;
-    height: calc(100vh - 66px); 
-    overflow-y: auto;           
-    scrollbar-width: none;      
-}
-#main-content::-webkit-scrollbar { display: none; }
-
-/* 幫其他「不需要全螢幕」的內容重新加上置中與安全範圍 */
-#wiki-title, #article-tab, #quiz-tab, #calendar-tab, .card-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-/* 讓非全螢幕頁面的標題維持美觀的距離 */
-#wiki-title, #quiz-title, #calendar-tab h2, #article-tab h2 {
-    margin-top: 40px;
-    text-align: center;
-}
-
 .tab-content { display: none; animation: fadeIn 0.4s ease; }
 .tab-content.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -153,20 +119,42 @@ body {
     background: #fafafa; border-radius: 5px; cursor: pointer; transition: 0.2s;
 }
 .quiz-option:hover { background: #eee; }
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding-left: 30px;
+    border-left: 4px solid var(--f1-color);
+}
 
 /* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
+
+/* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
+
 .story-container {
+    /* 突破左右寬度限制 */
     width: 100vw;
-    height: calc(100vh - 66px);
-    margin: 0; 
+    margin-left: calc(-50vw + 50%);
+    
+    /* 突破上下 padding 限制 (抵消 .container 原本的 40px 空白) */
+    margin-top: -40px;
+    margin-bottom: -40px;
+    
+    /* 高度設定為：100% 螢幕高度 減去 上方導覽列的大約高度(65px) */
+    height: calc(100vh - 65px);
+    
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none; 
 }
-.story-container::-webkit-scrollbar { display: none; }
+
+.story-container::-webkit-scrollbar {
+    display: none;
+}
 
 .story-slide {
-    height: calc(100vh - 66px);
+    /* 每一頁的高度也必須配合扣除導覽列，這樣滑動時才會完美貼合 */
+    height: calc(100vh - 65px);
     width: 100vw;
     scroll-snap-align: start;
     display: flex;
@@ -180,6 +168,7 @@ body {
     background-attachment: fixed; 
 }
 
+/* 加上深色漸層遮罩，確保白字在任何圖片上都清晰可見 */
 .story-slide::before {
     content: '';
     position: absolute;
@@ -189,36 +178,33 @@ body {
 }
 
 .story-content {
-    position: absolute;
-    bottom: 80px;
-    right: 50px;
+    position: relative;
     z-index: 2;
-    max-width: 550px;
+    max-width: 800px;
     padding: 50px;
-    text-align: left;
-    background: transparent; 
-    backdrop-filter: none; 
-    border: none;
-    box-shadow: none;
+    /* 製作蘋果風格的毛玻璃黑底框 */
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(12px); 
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    /* 加入進場動畫 */
     animation: slideUpFade 1s ease-out forwards;
-    scrollbar-width: none;
-}
-.story-content::-webkit-scrollbar { display: none; }
-
-.story-content h3 { 
-    font-size: 2.5rem; 
-    margin-top: 0; 
-    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
-    color: white;
 }
 
-.story-content p { 
-    font-size: 1.15rem; 
-    line-height: 1.8; 
-    margin-bottom: 20px; 
-    color: #f4f6f9;
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
+.story-year {
+    display: inline-block;
+    background: var(--f1-color);
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(225, 6, 0, 0.4);
 }
+
+.story-content h3 { font-size: 2.8rem; margin-top: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+.story-content p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 25px; text-align: justify; }
 
 .story-fun-fact { 
     background: rgba(255, 193, 7, 0.15); 
@@ -230,6 +216,7 @@ body {
     color: #ffd54f;
 }
 
+/* 向下滑動提示小箭頭 */
 .slide-arrow {
     position: absolute;
     bottom: 30px;
@@ -248,14 +235,17 @@ body {
 
 /* === 測驗結果彈出視窗 (Modal) === */
 .modal-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100vw; height: 100vh;
+    position: fixed; /* 固定在螢幕上 */
+    top: 0; 
+    left: 0; 
+    width: 100vw; 
+    height: 100vh;
     background: rgba(0, 0, 0, 0.7);
-    display: none; 
+    display: none; /* 預設隱藏 */
     justify-content: center;
     align-items: center;
-    z-index: 1000;
-    backdrop-filter: blur(5px);
+    z-index: 9999; /* 確保它在最上層 */
+    backdrop-filter: blur(5px); /* 背景模糊效果 */
 }
 
 .modal-content {
@@ -266,21 +256,26 @@ body {
     max-width: 400px;
     width: 90%;
     box-shadow: 0 15px 40px rgba(0,0,0,0.4);
-    animation: slideUpFade 0.4s ease-out;
+    /* 移除掉可能導致顯示異常的 margin 或 position */
 }
-
-.modal-content h2 { margin-top: 0; color: #2c3e50; font-size: 1.8rem; }
 
 .score-circle {
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: #f8f9fa;
-    border: 8px solid var(--active-color);
-    display: flex; justify-content: center; align-items: center;
-    font-size: 3rem; font-weight: bold; color: var(--text-main);
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%; /* 這是變成圓形的關鍵 */
+    border: 12px solid #e74c3c; /* 這是紅色圓圈的關鍵 */
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    font-size: 3.5rem; 
+    font-weight: bold; 
+    color: #2c3e50;
     margin: 20px auto;
+    background: #ffffff; /* 確保圓圈背景是白色的 */
 }
-.score-circle span { font-size: 1rem; margin-left: 5px; color: #7f8c8d; }
 
-.score-details p { font-size: 1.3rem; font-weight: bold; margin: 10px 0; }
-.score-comment { color: #7f8c8d; font-size: 1.1rem; margin-top: 20px; }
+.score-circle span { 
+    font-size: 1.2rem; 
+    margin-left: 5px; 
+    color: #7f8c8d; 
+}
