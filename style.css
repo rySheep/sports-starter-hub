@@ -16,7 +16,7 @@ body {
     background-color: var(--bg-color);
     color: var(--text-main);
     overflow-x: hidden;
-    scroll-behavior: smooth; /* 讓錨點滾動變得平滑 */
+    scroll-behavior: smooth;
 }
 
 /* === 第一屏：分割畫面 === */
@@ -80,7 +80,7 @@ body {
     background-color: #1a252f;
     color: white;
     padding: 15px 30px;
-    position: sticky; /* 讓導覽列滾動時吸頂 */
+    position: sticky;
     top: 0;
     z-index: 100;
 }
@@ -119,41 +119,22 @@ body {
     background: #fafafa; border-radius: 5px; cursor: pointer; transition: 0.2s;
 }
 .quiz-option:hover { background: #eee; }
-.timeline {
-    position: relative;
-    max-width: 800px;
-    margin: 40px auto;
-    padding-left: 30px;
-    border-left: 4px solid var(--f1-color);
-}
 
 /* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
-
-/* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
-
 .story-container {
-    /* 突破左右寬度限制 */
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    
-    /* 突破上下 padding 限制 (抵消 .container 原本的 40px 空白) */
     margin-top: -40px;
     margin-bottom: -40px;
-    
-    /* 高度設定為：100% 螢幕高度 減去 上方導覽列的大約高度(65px) */
     height: calc(100vh - 65px);
-    
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none; 
 }
 
-.story-container::-webkit-scrollbar {
-    display: none;
-}
+.story-container::-webkit-scrollbar { display: none; }
 
 .story-slide {
-    /* 每一頁的高度也必須配合扣除導覽列，這樣滑動時才會完美貼合 */
     height: calc(100vh - 65px);
     width: 100vw;
     scroll-snap-align: start;
@@ -168,7 +149,6 @@ body {
     background-attachment: fixed; 
 }
 
-/* 加上深色漸層遮罩，確保白字在任何圖片上都清晰可見 */
 .story-slide::before {
     content: '';
     position: absolute;
@@ -182,13 +162,11 @@ body {
     z-index: 2;
     max-width: 800px;
     padding: 50px;
-    /* 製作蘋果風格的毛玻璃黑底框 */
     background: rgba(0, 0, 0, 0.4); 
     backdrop-filter: blur(12px); 
     border-radius: 20px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-    /* 加入進場動畫 */
     animation: slideUpFade 1s ease-out forwards;
 }
 
@@ -216,7 +194,6 @@ body {
     color: #ffd54f;
 }
 
-/* 向下滑動提示小箭頭 */
 .slide-arrow {
     position: absolute;
     bottom: 30px;
