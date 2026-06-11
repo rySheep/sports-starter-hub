@@ -1,42 +1,234 @@
+:root {
+    --bg-color: #f4f6f9;
+    --text-main: #2c3e50;
+    --f1-color: #e10600; 
+    --mlb-color: #002d72; 
+    --transition-speed: 0.4s;
+    --active-color: #18bc9c;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f6f9;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    overflow-x: hidden;
+    scroll-behavior: smooth; /* 讓錨點滾動變得平滑 */
 }
+
+/* === 第一屏：分割畫面 === */
+.hero-section {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+}
+.split {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: flex var(--transition-speed) ease-in-out;
+    position: relative;
+    overflow: hidden;
+}
+.split:hover { flex: 1.2; }
+
+.left-f1 {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/verstappen.webp') center/cover;
+    color: white;
+}
+.right-mlb {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/mlb.jpg') center/cover;
+    color: white;
+}
+
+.content h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
+.content p { font-size: 1.2rem; margin-bottom: 30px; opacity: 0.9; }
+
+.btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.f1-btn { background-color: var(--f1-color); color: white; }
+.mlb-btn { background-color: var(--mlb-color); color: white; }
+.btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
+
+.scroll-indicator {
+    position: absolute; bottom: 30px; left: 50%;
+    transform: translateX(-50%); text-align: center;
+    color: white; font-weight: bold; z-index: 10;
+    pointer-events: none;
+}
+.scroll-indicator .arrow { font-size: 1.5rem; margin-top: 5px; animation: bounce 2s infinite; }
+@keyframes bounce { 0%, 20%, 50%, 80%, 100% { transform: translateY(0); } 40% { transform: translateY(-10px); } 60% { transform: translateY(-5px); } }
+
+/* === 導覽列 === */
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     background-color: #1a252f;
     color: white;
     padding: 15px 30px;
+    position: sticky; /* 讓導覽列滾動時吸頂 */
+    top: 0;
+    z-index: 100;
 }
-.nav-links button, .sport-buttons button {
-    background: #34495e;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 4px;
+.navbar .logo { font-size: 1.5rem; font-weight: bold; }
+.navbar button {
+    background: #34495e; color: white; border: none;
+    padding: 10px 15px; margin: 0 5px; border-radius: 4px; cursor: pointer;
+    transition: 0.3s;
 }
-.nav-links button:hover, .sport-buttons button:hover {
-    background: #18bc9c;
+.navbar button:hover { background: var(--active-color); }
+.navbar button.active { background: var(--active-color); font-weight: bold; }
+
+.sport-toggle button.active-f1 { background: var(--f1-color); }
+.sport-toggle button.active-mlb { background: var(--mlb-color); }
+
+/* === 內容區與卡片 === */
+.container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+.tab-content { display: none; animation: fadeIn 0.4s ease; }
+.tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.card-container { display: grid; gap: 20px; }
+.card {
+    background: white; padding: 25px; border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-left: 5px solid #ccc;
 }
-.container {
-    padding: 30px;
+.card.f1-card { border-left-color: var(--f1-color); }
+.card.mlb-card { border-left-color: var(--mlb-color); }
+.card h3 { margin-top: 0; color: var(--text-main); font-size: 1.3rem;}
+.card p { color: #555; line-height: 1.6; margin-bottom: 5px; }
+
+/* 測驗選項 */
+.quiz-option {
+    display: block; width: 100%; text-align: left;
+    padding: 10px 15px; margin-top: 8px; border: 1px solid #ddd;
+    background: #fafafa; border-radius: 5px; cursor: pointer; transition: 0.2s;
 }
-/* 核心：控制頁籤隱藏與顯示 */
-.tab-content {
+.quiz-option:hover { background: #eee; }
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 40px auto;
+    padding-left: 30px;
+    border-left: 4px solid var(--f1-color);
+}
+
+/* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
+
+/* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
+
+.story-container {
+    /* 突破左右寬度限制 */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    
+    /* 突破上下 padding 限制 (抵消 .container 原本的 40px 空白) */
+    margin-top: -40px;
+    margin-bottom: -40px;
+    
+    /* 高度設定為：100% 螢幕高度 減去 上方導覽列的大約高度(65px) */
+    height: calc(100vh - 65px);
+    
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scrollbar-width: none; 
+}
+
+.story-container::-webkit-scrollbar {
     display: none;
 }
-.tab-content.active {
-    display: block;
+
+.story-slide {
+    /* 每一頁的高度也必須配合扣除導覽列，這樣滑動時才會完美貼合 */
+    height: calc(100vh - 65px);
+    width: 100vw;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: white;
+    text-align: center;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed; 
 }
-.card {
-    background: white;
-    padding: 20px;
-    margin: 15px 0;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+/* 加上深色漸層遮罩，確保白字在任何圖片上都清晰可見 */
+.story-slide::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.8));
+    z-index: 1;
+}
+
+.story-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 50px;
+    /* 製作蘋果風格的毛玻璃黑底框 */
+    background: rgba(0, 0, 0, 0.4); 
+    backdrop-filter: blur(12px); 
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    /* 加入進場動畫 */
+    animation: slideUpFade 1s ease-out forwards;
+}
+
+.story-year {
+    display: inline-block;
+    background: var(--f1-color);
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(225, 6, 0, 0.4);
+}
+
+.story-content h3 { font-size: 2.8rem; margin-top: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+.story-content p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 25px; text-align: justify; }
+
+.story-fun-fact { 
+    background: rgba(255, 193, 7, 0.15); 
+    border-left: 4px solid #ffc107; 
+    padding: 15px 20px; 
+    border-radius: 0 10px 10px 0; 
+    text-align: left; 
+    font-size: 1rem;
+    color: #ffd54f;
+}
+
+/* 向下滑動提示小箭頭 */
+.slide-arrow {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    color: rgba(255,255,255,0.7);
+    z-index: 2;
+    animation: bounce 2s infinite;
+}
+
+@keyframes slideUpFade {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
 }
