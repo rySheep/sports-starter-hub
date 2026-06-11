@@ -1,3 +1,8 @@
+html {
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+
 :root {
     --bg-color: #f4f6f9;
     --text-main: #2c3e50;
@@ -25,6 +30,8 @@ body {
     width: 100vw;
     height: 100vh;
     display: flex;
+    scroll-snap-align: start; 
+    scroll-snap-stop: always; 
 }
 .split {
     flex: 1;
@@ -83,6 +90,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    scroll-snap-align: start; 
 }
 .navbar .logo { font-size: 1.5rem; font-weight: bold; }
 .navbar button {
@@ -98,6 +106,32 @@ body {
 
 /* === 內容區與卡片 === */
 .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
+
+/* 覆蓋原始設定，讓主內容區強制變成 100% 滿版全螢幕 */
+#main-content.container {
+    max-width: 100vw;  
+    padding: 0;        
+    margin: 0;
+    height: calc(100vh - 66px); 
+    overflow-y: auto;           
+    scrollbar-width: none;      
+}
+#main-content::-webkit-scrollbar { display: none; }
+
+/* 幫其他「不需要全螢幕」的內容重新加上置中與安全範圍 */
+#wiki-title, #article-tab, #quiz-tab, #calendar-tab, .card-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+/* 讓非全螢幕頁面的標題維持美觀的距離 */
+#wiki-title, #quiz-title, #calendar-tab h2, #article-tab h2 {
+    margin-top: 40px;
+    text-align: center;
+}
+
 .tab-content { display: none; animation: fadeIn 0.4s ease; }
 .tab-content.active { display: block; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
@@ -123,19 +157,16 @@ body {
 /* === 沉浸式全螢幕簡報設計 (Scroll Snapping) === */
 .story-container {
     width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    margin-top: -40px;
-    margin-bottom: -40px;
-    height: calc(100vh - 65px);
+    height: calc(100vh - 66px);
+    margin: 0; 
     overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scrollbar-width: none; 
 }
-
 .story-container::-webkit-scrollbar { display: none; }
 
 .story-slide {
-    height: calc(100vh - 65px);
+    height: calc(100vh - 66px);
     width: 100vw;
     scroll-snap-align: start;
     display: flex;
@@ -158,31 +189,36 @@ body {
 }
 
 .story-content {
-    position: relative;
+    position: absolute;
+    bottom: 80px;
+    right: 50px;
     z-index: 2;
-    max-width: 800px;
+    max-width: 550px;
     padding: 50px;
-    background: rgba(0, 0, 0, 0.4); 
-    backdrop-filter: blur(12px); 
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    text-align: left;
+    background: transparent; 
+    backdrop-filter: none; 
+    border: none;
+    box-shadow: none;
     animation: slideUpFade 1s ease-out forwards;
+    scrollbar-width: none;
+}
+.story-content::-webkit-scrollbar { display: none; }
+
+.story-content h3 { 
+    font-size: 2.5rem; 
+    margin-top: 0; 
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9);
+    color: white;
 }
 
-.story-year {
-    display: inline-block;
-    background: var(--f1-color);
-    padding: 8px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
-    box-shadow: 0 4px 10px rgba(225, 6, 0, 0.4);
+.story-content p { 
+    font-size: 1.15rem; 
+    line-height: 1.8; 
+    margin-bottom: 20px; 
+    color: #f4f6f9;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.9);
 }
-
-.story-content h3 { font-size: 2.8rem; margin-top: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-.story-content p { font-size: 1.2rem; line-height: 1.8; margin-bottom: 25px; text-align: justify; }
 
 .story-fun-fact { 
     background: rgba(255, 193, 7, 0.15); 
@@ -215,7 +251,7 @@ body {
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     background: rgba(0, 0, 0, 0.7);
-    display: none; /* 預設隱藏 */
+    display: none; 
     justify-content: center;
     align-items: center;
     z-index: 1000;

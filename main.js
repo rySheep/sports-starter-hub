@@ -16,32 +16,39 @@ const wikiRecords = {
 // 新增：F1 歷史編年史資料 (網羅各個年代的精華)
 const f1History = [
     {
-        year: "1950年代：F1 的誕生",
-        title: "銀石賽道的初代霸主",
-        desc: "1950 年 5 月 13 日，史上第一場 F1 世界錦標賽在英國銀石 (Silverstone) 賽道舉辦。當時的賽車引擎裝在車頭，車手甚至只戴著簡單的皮帽或帆布帽就上場飆速，完全沒有現代的安全帶概念。阿根廷車手 Fangio 統治了這個時代，拿下 5 座世界冠軍。",
-        img: "https://images.unsplash.com/photo-1541343759972-e1903e67041c?auto=format&fit=crop&w=800&q=80",
+        year: "1950年代",
+        title: "F1 的誕生與前置引擎",
+        desc: "1950 年，第一場 F1 世界錦標賽在英國銀石賽道舉辦。當時的賽車多為「前置引擎」，外觀呈現雪茄狀，完全沒有空氣動力學或下壓力概念。車手甚至不繫安全帶，僅佩戴布製頭罩和護目鏡上陣，充滿了危險與純粹的機械感。阿根廷車手 Fangio 統治了這個時代，十年內奪下 5 次世界冠軍。",
+        img: "./images/f1 1950.jpg", // 🌟 換成你的本機圖片路徑
         funFact: "💡 趣事：當時有些車手在比賽中途還會停下來喝杯香檳，或是跟隊友交換車輛繼續開！"
     },
     {
-        year: "1960 - 1970年代：空氣動力學革命",
-        title: "引擎後置與翅膀的出現",
-        desc: "工程師發現把引擎移到車手後方能大幅提升操控性，Cooper 車隊開啟了「後置引擎」革命。隨後，Lotus 車隊率先引入了「空氣動力學」概念，在賽車上裝上巨大的前後翼（翅膀），利用空氣把車子死死壓在賽道上（下壓力）。",
-        img: "https://images.unsplash.com/photo-1532560877990-281b3df601d5?auto=format&fit=crop&w=800&q=80",
-        funFact: "💡 趣事：1976 年 Tyrrell 車隊造出了「六輪賽車 (P34)」，前面有四個小輪子，雖然真的拿過冠軍，但後來被賽會禁止了。"
+        year: "1960s - 1970s",
+        title: "引擎後置與空力革命",
+        desc: "這個時期帶來了史上最重大的結構革命。引擎被移至車手後方，大幅改善了操控性。隨後 Lotus 車隊首創了「單體殼底盤」與「空氣動力學」概念，賽車長出了巨大的前後翼，利用空氣將車子死死壓在賽道上。70年代末更引入了「地面效應」，過彎速度獲得史詩級提升。",
+        img: "./images/f1 1970.jpg", // 🌟 換成你的本機圖片路徑
+        funFact: "💡 趣事：1976 年 Tyrrell 車隊造出了「六輪賽車 (P34)」，前面有四個小輪子，雖然拿過冠軍但後來被禁用。"
     },
     {
-        year: "1980 - 1990年代：黃金時代與安全覺醒",
-        title: "渦輪怪獸與洗牌的賽規",
-        desc: "80 年代迎來了「渦輪增壓」時代，賽車在排位賽的馬力甚至可以榨出恐怖的 1200 匹！這個時期誕生了洗拿 (Ayrton Senna) 與保魯斯 (Alain Prost) 的世紀宿敵對決。然而，1994 年洗拿的意外殞落震驚全球，促使 F1 進行了史無前例的安全大改革。",
-        img: "https://images.unsplash.com/photo-1511365857211-1baab1bf7cbb?auto=format&fit=crop&w=800&q=80",
-        funFact: "💡 變更：90年代曾引進「主動懸吊系統」，車子過彎會自動保持水平，但因為太像「電腦在開車」而被禁用。"
+        year: "1980s - 1990s",
+        title: "渦輪怪獸與安全覺醒",
+        desc: "80 年代是 F1 的「渦輪增壓」盛世，賽車在排位賽模式下能榨出超過 1,200 匹的恐怖馬力！這時期見證了洗拿 (Ayrton Senna) 與保魯斯 (Alain Prost) 的世紀對決。然而，1994 年洗拿的意外殞落震驚全球，促使 F1 進行了史無前例的安全大改革，並強制實施嚴格的撞擊測試。",
+        img: "./images/f1 1990.jpg", // 🌟 換成你的本機圖片路徑
+        funFact: "💡 變更：90年代曾引進「主動懸吊系統」，車子過彎會自動保持水平，但因為太像電腦在開車而被禁用。"
     },
     {
-        year: "2010 - 2020年代：現代科技頂峰",
-        title: "油電混合與 Halo 保護陣",
-        desc: "2014 年 F1 進入「V6 渦輪油電混合動力」時代，引擎變得更小卻更高效，開啟了賓士 (Mercedes) 車隊與 Hamilton 的霸業。2018 年強制加裝了人字型防滾架「Halo」，雖然一開始被車迷嫌醜，卻在隨後幾年拯救了無數車手的性命。現在則是 Verstappen 統治的地面效應 (Ground Effect) 時代。",
-        img: "https://images.unsplash.com/photo-1610884447640-42b8ec61a933?auto=format&fit=crop&w=800&q=80",
-        funFact: "💡 規則：為了縮小貧富差距，F1 在 2021 年正式引入「預算帽」，限制豪門車隊每年只能花約 1.35 億美金打造賽車。"
+        year: "2000s - 2010s",
+        title: "V10 聲浪與油電混合",
+        desc: "千禧年初期被 V10 引擎高亢刺耳的聲浪所定義，這是舒馬克 (Michael Schumacher) 與法拉利的紅色王朝。到了 2014 年，F1 迎來最大變革，進入「V6 渦輪油電混合動力」時代，開啟了賓士車隊與 Hamilton 的八連霸業。2018 年，拯救無數生命的「Halo」頭部保護架正式強制加裝。",
+        img: "./images/f1 2010.jpg", // 🌟 換成你的本機圖片路徑
+        funFact: "💡 創新：為了增加賽事觀賞性與超車機會，2011 年正式引入了 DRS (減阻系統)。"
+    },
+    {
+        year: "2020年代",
+        title: "地面效應回歸與新世代",
+        desc: "為了解決賽車跟車時亂流導致難以超車的問題，2022 年空力規則大洗牌，重新帶回了「地面效應」底盤設計。同時，F1 史上首度實施「預算帽」限制開銷。這個年代開啟了 Max Verstappen 與 Red Bull 車隊的新霸業，寫下現代 F1 最不可思議的連勝神級數據。",
+        img: "./images/f1 2020.jpg", // 🌟 換成你的本機圖片路徑
+        funFact: "💡 規則：目前車隊每年被限制只能花費約 1.35 億美金打造與研發賽車，以拉近貧富差距。"
     }
 ];
 
@@ -127,8 +134,9 @@ let currentTab = 'wiki';
 
 function enterSport(sport) {
     setSport(sport);
-    document.getElementById('main-content').scrollIntoView({ behavior: 'smooth' });
+    document.querySelector('.navbar').scrollIntoView({ behavior: 'smooth' });
 }
+
 
 function setSport(sport) {
     currentSport = sport;
@@ -165,34 +173,14 @@ function loadWiki() {
     display.innerHTML = ''; 
 
     if (currentSport === 'f1') {
-        // 隱藏原本的標題，因為我們要用全螢幕來展示
+        // 隱藏原本的預設標題，因為我們要用滿版全螢幕來展示
         title.style.display = 'none'; 
 
         // 建立全螢幕滾動容器
         const storyContainer = document.createElement('div');
         storyContainer.className = 'story-container';
 
-        // 加上一個「封面頁」：經典歷史紀錄
-        let coverHtml = `
-            <div class="story-slide" style="background-image: url('https://images.unsplash.com/photo-1541343759972-e1903e67041c?auto=format&fit=crop&w=1920&q=80');">
-                <div class="story-content">
-                    <span class="story-year">F1 榮耀殿堂</span>
-                    <h3>🏆 經典歷史紀錄</h3>
-                    <div style="text-align: left; margin-top: 20px;">
-        `;
-        wikiRecords.f1.forEach(item => {
-            coverHtml += `<p><strong>${item.title}：</strong> <span style="color:#ff4a4a;">${item.holder}</span><br><span style="font-size:0.9rem; opacity:0.8;">${item.detail}</span></p>`;
-        });
-        coverHtml += `
-                    </div>
-                    <p style="margin-top: 30px; font-size: 0.9rem; opacity: 0.7;">向下滾動進入時光機 ↓</p>
-                </div>
-                <div class="slide-arrow">↓</div>
-            </div>
-        `;
-        storyContainer.innerHTML += coverHtml;
-
-        // 動態生成每一個年代的「全螢幕頁面」
+        // 直接跑迴圈，動態生成每一個年代的「全螢幕頁面」
         f1History.forEach((era, index) => {
             // 如果是最後一頁，就不顯示向下箭頭
             const arrowHtml = index === f1History.length - 1 ? '' : '<div class="slide-arrow">↓</div>';
