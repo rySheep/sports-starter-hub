@@ -10,24 +10,22 @@
 
     <nav class="navbar">
         <div class="logo">🥇 Sports Hub</div>
+        <div class="sport-selector" style="margin: 0 20px;">
+            <button id="nav-btn-f1" onclick="enterSport('f1')">🏁 F1</button>
+            <button id="nav-btn-mlb" onclick="enterSport('mlb')">⚾ MLB</button>
+        </div>
         <div class="nav-links">
-            <button onclick="switchTab('wiki')">歷史維基</button>
-            <button onclick="switchTab('article')">科普專欄</button>
-            <button onclick="switchTab('quiz')">小小測驗王</button>
-            <button onclick="switchTab('calendar')">賽程行事曆</button>
+            <button id="tab-btn-wiki" class="active" onclick="switchTab('wiki')">歷史維基</button>
+            <button id="tab-btn-article" onclick="switchTab('article')">科普專欄</button>
+            <button id="tab-btn-quiz" onclick="switchTab('quiz')">小小測驗王</button>
+            <button id="tab-btn-calendar" onclick="switchTab('calendar')">賽程行事曆</button>
         </div>
     </nav>
 
-    <main class="container">
+    <main id="main-content" class="container">
         <section id="wiki-tab" class="tab-content active">
-            <h2>🏆 體育歷史維基</h2>
-            <div class="sport-buttons">
-                <button onclick="loadWiki('f1')">🏎️ F1 賽車</button>
-                <button onclick="loadWiki('mlb')">⚾ MLB 大聯盟</button>
-            </div>
-            <div id="wiki-display" class="card-container">
-                <p>請選擇想查詢的運動項目</p>
-            </div>
+            <h2 id="wiki-title">🏆 體育歷史維基</h2>
+            <div id="wiki-display"></div>
         </section>
 
         <section id="article-tab" class="tab-content">
@@ -36,9 +34,10 @@
         </section>
 
         <section id="quiz-tab" class="tab-content">
-            <h2>🧠 小小測驗王</h2>
-            <p>測驗題庫載入中...</p>
+            <h2 id="quiz-title">🧠 小小測驗王</h2>
+            <div id="quiz-display"></div>
         </section>
+
         <section id="calendar-tab" class="tab-content">
             <h2>📅 當月賽程行事曆</h2>
             <p>請選擇你想查詢的運動項目：</p>
@@ -46,12 +45,11 @@
                 <button onclick="loadSchedule('f1')">🏎️ F1 賽車賽程</button>
                 <button onclick="loadSchedule('mlb')">⚾ MLB 大聯盟賽程</button>
             </div>
-    
+            
             <div id="schedule-display" class="display-zone" style="margin-top: 20px;">
                 <p>請點擊上方按鈕載入最新賽程...</p>
             </div>
         </section>
-        
     </main>
 
     <script src="main.js"></script>
