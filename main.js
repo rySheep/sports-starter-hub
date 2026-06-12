@@ -167,6 +167,33 @@ const f1ArticleData = {
     ]
 };
 
+// ================= MLB 科普專欄超詳盡資料庫 =================
+const mlbArticleData = {
+    rules: [
+        { title: "基本賽制與勝負", desc: "一場標準大聯盟棒球比賽分為 9 局（Innings），每局分為上下半局。客隊在先（上半局）進攻，主隊在後（下半局）進攻。防守方（主隊）必須取得 3 個出局數（Outs）才能結束半局並換邊。若 9 局打完雙方平手，則進入延長賽（Extra Innings），直到分出勝負為止。", img: "./images/mlb rul 1.webp" },
+        { title: "球場規格與維度", desc: "大聯盟標準球場內野呈現「鑽石形（Diamond）」。四個壘包（本壘、一壘、二壘、三壘）之間的距離皆為 90 英尺（約 27.4 公尺）。而最核心的「投手丘」距離本壘板則是 60 英尺 6 英吋（約 18.44 公尺）。各球場的外野全壘打牆距離與高度則沒有嚴格統一，造就了每座球場獨特的戰略風格。", img: "./images/mlb rul 2.png" },
+        { title: "投打對決：好壞球與保送", desc: "好球帶（Strike Zone）的垂直範圍大約落在打者胸部下方到膝蓋上緣，水平寬度則是本壘板的寬度（17英吋）。投手若將球投進此區域或打者揮棒落空，計為 1 個「好球（Strike）」，累計 3 個好球即為三振（Strikeout）。反之，投出好球帶外且打者未揮棒則計為「壞球（Ball）」，累計 4 個壞球，打者可獲四壞球保送（Walk）免費上一壘。", img: "./images/mlb rul 3.jpg" },
+        { title: "出局機制：封殺與觸殺", desc: "防守方除了三振，主要靠兩種方式抓出局：一是「封殺（Force Out）」，當打者擊出滾地球，防守員在打者或被迫進壘的跑者抵達壘包前，持球踩住該壘包；二是「觸殺（Tag Out）」，當跑者不在壘包保護範圍內，防守員直接用手套持球碰觸跑者身體。", img: "./images/mlb rul 4.jpg" },
+        { title: "現代棒球新規限制", desc: "為改善比賽節奏冗長的問題，MLB 於 2023 年引入革命性新規：實施「投球計時器（Pitch Clock）」，壘上無人時投手須在 15 秒內投球，有人時為 20 秒；此外，全面禁止極端內野佈陣（Shift），規定二壘兩側必須各有兩名內野手且須踩在泥土區，藉此提高安打率與比賽觀賞性。", img: "./images/mlb rul 5.jpg" }
+    ],
+    tech: [
+        { title: "投手動力鍊 (Kinetic Chain)", desc: "頂級投手的 100 英哩火球並非只靠手臂，而是來自全身的「動力鍊」。從下半身蹬地產生力量，傳導至旋轉的髖關節與核心核心，最後像甩鞭子般將力量釋放至手臂與指尖。這種完美的生物力學不僅能極大化球速，還能保護手肘與肩膀免於受傷。", img: "./images/mlb tech 1.jpg" },
+        { title: "速球的物理學與馬格努斯效應", desc: "大聯盟最常見的「四縫線速球（4-Seam Fastball）」之所以看起來像會「往上竄」，是因為投手施加了極高的逆旋轉（Backspin）。這會產生馬格努斯效應（Magnus Effect），對抗地心引力，讓球的下墜幅度比打者大腦預期的還少，導致打者揮棒落空或擊出高飛球。", img: "./images/mlb tech 2.jpg" },
+        { title: "變化球的藝術：滑球與橫掃滑球", desc: "變化球利用不同的握法與手指施力產生側旋或下旋。傳統滑球（Slider）帶有銳利的斜下墜軌跡；而近年大聯盟最致命的新武器「橫掃滑球（Sweeper）」，則強調極端的橫向位移，有些 Sweeper 甚至能在進入本壘板前橫向位移超過 20 英吋，讓打者防不勝防。", img: "./images/mlb tech 3.jpg" },
+        { title: "飛球革命與擊球仰角 (Launch Angle)", desc: "現代打者不再盲目追求將球打平，而是基於物理學的「飛球革命」。數據證明，最容易形成長打與全壘打的「擊球仰角」落在 15 到 30 度之間，且擊球初速需超過 95 英哩。為此，打者紛紛修改揮棒軌跡（Swing Plane），改為稍微由下往上的「上撈」式揮擊。", img: "./images/mlb tech 4.jpg" },
+        { title: "捕手接球藝術：偷好球 (Framing)", desc: "捕手不只是接球機器。頂級捕手精通「Framing（框架技巧）」，他們利用極小的手套微調與柔和的手腕動作，將剛剛好落在好球帶邊緣的「壞球」，順勢拉回好球帶內並定住，利用視覺錯覺影響主審判決。這項技術每年能為球隊省下幾十失分。", img: "./images/mlb tech 5.png" },
+        { title: "盜壘的解讀與滑壘技術", desc: "在大聯盟盜壘，速度只是基本。真正的高手靠的是「解讀（Read）」——精準抓出投手準備投球瞬間的微小重心變化（Tell），從而在投手出手前就完成起跑（Jump）。此外，利用手部觸壘的「頭部滑壘（Head-first Slide）」能有效避開野手的觸殺標籤。", img: "./images/mlb tech 6.jpg" },
+        { title: "科技棒球：Statcast 與數據監測", desc: "現代 MLB 是數據與科技的終極結合。球場佈滿高速攝影機與雷達組成的 Statcast 系統，能即時監測投手的「轉速（Spin Rate）」、打者的「擊球初速（Exit Velocity）」甚至外野手的「啟動反應時間（Jump）」。球隊依賴這些高階數據來調整球員動作與排兵布陣。", img: "./images/mlb tech 7.jpg" }
+    ],
+    records: [
+        { title: "全壘打之巔的傳奇", desc: "全壘打是棒球最迷人的瞬間。Barry Bonds 在 2001 年創下史無前例的單季 73 轟，最終更以生涯 762 轟成為大聯盟歷史全壘打王。儘管身處充滿爭議的年代，但他那極度恐怖的選球眼與揮棒爆發力，至今仍被視為打擊區上最具威脅性的存在。",  img: "./images/mlb rec 1.jpg" },
+        { title: "無法觸及的三振障礙", desc: "「特快車」Nolan Ryan 是棒球史上最令人畏懼的火球男。他生涯總計投出高達 5,714 次三振，比歷史第二名多出近千次！更誇張的是，他生涯共投出 7 場「無安打比賽」，這項宰制力十足的傲人紀錄，被現代棒球界公認為永遠不可能被打破的神話。",  img: "./images/mlb rec 2.jpg" },
+        {  title: "連續安打的永恆障礙", desc: "棒球被認為是失敗率極高的運動，但紐約洋基隊名將 Joe DiMaggio 卻在 1941 年締造了不可思議的奇蹟。他創下了「連續 56 場比賽擊出安打」的神級紀錄。在超過 80 年的歲月裡，無數頂級打者挑戰皆鎩羽而歸，這也被全美體育界公認為大聯盟史上最難以跨越的聖母峰。",  img: "./images/mlb rec 3.jpg" },
+        {  title: "盜壘之王的無敵奔馳", desc: "在壘包間的破壞力沒有人能超越 Rickey Henderson。他生涯累積了高達 1,406 次盜壘成功，比歷史第二名多出了將近 500 次。他同時也是大聯盟歷史上得分最多、獲得保送最多的超級開路先鋒，他在壘包上的絕對統治力，讓後世所有盜壘者望塵莫及。", img: "./images/mlb rec 4.jpg" },
+        {  title: "史無前例的現代二刀流",  desc: "當今棒壇的終極怪物大谷翔平（Shohei Ohtani），不僅以先發投手身分投出過三振霸業，更以指定打擊身分奪下全壘打王。2024 年，他甚至在單一賽季中達成了史無前例的「50支全壘打 + 50次盜壘成功（50-50 Club）」，徹底打破了百年來人們對棒球運動員極限的認知。",  img: "./images/mlb rec 5.jpg" }
+    ]
+};
+
 // ================= 升級版測驗題庫 =================
 // ================= 3大種類各 8 題的黃金題庫 =================
 // ================= F1 + MLB 終極大滿貫題庫 =================
@@ -329,12 +356,10 @@ const quizData = {
 
 let currentQuizCategory = null; 
 let userAnswers = {}; 
-let current10Questions = []; // 🌟 新增：用來記錄「這次抽出的 10 題」，讓交卷時知道滿分是多少
+let current10Questions = []; 
 
-// 🌟 新增：萬用洗牌小工具 (Fisher-Yates Shuffle)
-// 這個函數可以把任何陣列（題目或選項）隨機打亂
 function shuffleArray(arr) {
-    let newArr = [...arr]; // 複製一份，避免改到原始資料
+    let newArr = [...arr];
     for (let i = newArr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
@@ -345,23 +370,25 @@ function shuffleArray(arr) {
 // ================= 2. 狀態與控制邏輯 =================
 let currentSport = 'f1'; 
 let currentTab = 'wiki'; 
-let currentArticleSubTab = null; // 🌟 紀錄目前在科普專欄的哪個分區 (tech, rules, records)
+let currentArticleSubTab = null; 
 
 function enterSport(sport) {
     setSport(sport);
     document.querySelector('.navbar').scrollIntoView({ behavior: 'smooth' });
 }
 
-
 function setSport(sport) {
     currentSport = sport;
     document.getElementById('nav-btn-f1').className = sport === 'f1' ? 'active-f1' : '';
     document.getElementById('nav-btn-mlb').className = sport === 'mlb' ? 'active-mlb' : '';
     
-    currentQuizCategory = null; // 🌟 切換運動項目時，重置測驗種類，不預設顯示題目
+    currentQuizCategory = null; 
+    currentArticleSubTab = null; 
     
     if (currentTab === 'wiki') loadWiki();
     if (currentTab === 'quiz') loadQuiz();
+    if (currentTab === 'article') loadArticle(); 
+    if (currentTab === 'calendar') loadCalendar(); 
 }
 
 function switchTab(tabName) {
@@ -374,71 +401,85 @@ function switchTab(tabName) {
     document.getElementById(`tab-btn-${tabName}`).classList.add('active');
 
     if (tabName === 'wiki') loadWiki();
-    
     if (tabName === 'quiz') {
-        currentQuizCategory = null; // 🌟 每次點擊導覽列切換到「小小測驗王」時，都先清空題目，讓使用者重新選
+        currentQuizCategory = null; 
         loadQuiz();
     }
     if (tabName === 'article') {
         currentArticleSubTab = null; 
         loadArticle();
     }
+    if (tabName === 'calendar') {
+        loadCalendar(); 
+    }
 }
 
-
+// ================= 3. 渲染資料函數 =================
 function loadArticle() {
     const display = document.getElementById('article-tab');
+    if(!display) return;
     display.innerHTML = ''; 
 
-    if (currentSport === 'mlb') {
-        display.innerHTML = '<h2 style="text-align:center; margin-top:40px;">✍️ MLB 體育科普專欄</h2><p style="text-align:center;">MLB 專欄內容正在籌備中，敬請期待...</p>';
-        return;
+    let currentData, bgClasses, texts;
+    if (currentSport === 'f1') {
+        currentData = f1ArticleData;
+        bgClasses = ['bg-tech', 'bg-rules', 'bg-records'];
+        texts = [
+            { title: " 技術核心", desc: "引擎、空力、輪胎與科技" },
+            { title: " 賽制規則", desc: "旗號、週末流程與積分" },
+            { title: " 榮耀紀錄", desc: "神級數據與傳奇名將" }
+        ];
+    } else {
+        currentData = mlbArticleData;
+        bgClasses = ['bg-mlb-tech', 'bg-mlb-rules', 'bg-mlb-records']; 
+        texts = [
+            { title: " 球員技術", desc: "動力鍊、球種與飛球革命" },
+            { title: " 基礎規則", desc: "賽制、好壞球與出局機制" },
+            { title: " 歷史紀錄", desc: "全壘打王與百年神話障礙" }
+        ];
     }
 
-    // === F1 科普專欄邏輯 ===
     if (currentArticleSubTab === null) {
-        // 狀態 1：渲染三分割首頁入口
         display.innerHTML = `
             <div class="article-hub">
-                <div class="split bg-tech" onclick="enterArticleSub('tech')">
+                <div class="split ${bgClasses[0]}" onclick="enterArticleSub('tech')">
                     <div class="content">
-                        <h2> 技術核心</h2>
-                        <p>引擎、空力、輪胎與科技</p>
+                        <h2>${texts[0].title}</h2>
+                        <p>${texts[0].desc}</p>
                     </div>
                 </div>
-                <div class="split bg-rules" onclick="enterArticleSub('rules')">
+                <div class="split ${bgClasses[1]}" onclick="enterArticleSub('rules')">
                     <div class="content">
-                        <h2> 賽制規則</h2>
-                        <p>旗號、週末流程與積分</p>
+                        <h2>${texts[1].title}</h2>
+                        <p>${texts[1].desc}</p>
                     </div>
                 </div>
-                <div class="split bg-records" onclick="enterArticleSub('records')">
+                <div class="split ${bgClasses[2]}" onclick="enterArticleSub('records')">
                     <div class="content">
-                        <h2> 榮耀紀錄</h2>
-                        <p>神級數據與傳奇名將</p>
+                        <h2>${texts[2].title}</h2>
+                        <p>${texts[2].desc}</p>
                     </div>
                 </div>
             </div>
         `;
     } else {
-        // 狀態 2：渲染沉浸式滿版展示
-        const data = f1ArticleData[currentArticleSubTab];
-        
-        // 🌟 新增：確保外層畫布是相對定位，讓返回按鈕可以準確定位在左上角
+        const data = currentData[currentArticleSubTab];
         display.style.position = 'relative'; 
 
-        // 建立返回按鈕
         const backBtn = document.createElement('button');
         backBtn.className = 'floating-back-btn';
         backBtn.innerText = '← 返回科普大廳';
+        
+        const hoverColor = currentSport === 'f1' ? 'var(--f1-color)' : 'var(--mlb-color)';
+        backBtn.onmouseover = () => backBtn.style.backgroundColor = hoverColor;
+        backBtn.onmouseout = () => backBtn.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+
         backBtn.onclick = () => {
             currentArticleSubTab = null;
             loadArticle();
         };
-        // 🌟 關鍵修改：把按鈕直接加在 display (#article-tab) 上，而不是加在會滾動的容器裡
         display.appendChild(backBtn); 
 
-        // 建立全螢幕滾動容器
         const storyContainer = document.createElement('div');
         storyContainer.className = 'story-container';
 
@@ -462,15 +503,12 @@ function enterArticleSub(subTab) {
     currentArticleSubTab = subTab;
     loadArticle();
 }
-// ================= 3. 渲染資料函數 =================
-// ================= 3. 渲染資料函數 =================
-// ================= 3. 渲染資料函數 =================
-// ================= 3. 渲染資料函數 =================
+
 function loadWiki() {
     const display = document.getElementById('wiki-display');
     const title = document.getElementById('wiki-title');
+    if(!display || !title) return;
     display.innerHTML = ''; 
-
     title.style.display = 'none'; 
 
     const storyContainer = document.createElement('div');
@@ -480,7 +518,6 @@ function loadWiki() {
 
     currentHistory.forEach((era, index) => {
         const arrowHtml = index === currentHistory.length - 1 ? '' : '<div class="slide-arrow">↓</div>';
-        
         storyContainer.innerHTML += `
             <div class="story-slide" style="background-image: url('${era.img}');">
                 <div class="story-content">
@@ -493,56 +530,94 @@ function loadWiki() {
             </div>
         `;
     });
-
     display.appendChild(storyContainer);
 }
-// ⚠️ 請確保往下滾動時，沒有第二個 function loadWiki() 出現，有的話請刪除！
 
-// ====== 功能 3：最新賽程表 (讀取 schedule.json 資料) ======
-function loadSchedule(sportType) {
-    const display = document.getElementById('schedule-display');
-    display.innerHTML = '<p>最新賽程載入中...</p>';
+// 🌟 新版毛玻璃賽程表 🌟
+function loadCalendar() {
+    const display = document.getElementById('calendar-tab');
+    if (!display) return; 
+    
+    display.innerHTML = '';
+    display.style.position = 'relative';
 
-    // 去 data 資料夾抓我們剛剛用 Python 爬蟲生出來的 schedule.json
+    const bgUrl = currentSport === 'f1' ? "./images/f1 menu.jpg" : "./images/mlb menu.jpg";
+    display.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('${bgUrl}')`;
+    display.style.backgroundSize = 'cover';
+    display.style.backgroundPosition = 'center';
+    display.style.backgroundAttachment = 'fixed';
+    display.style.minHeight = 'calc(100vh - 66px)'; 
+    display.style.paddingBottom = '50px'; 
+
+    const scheduleContainer = document.createElement('div');
+    scheduleContainer.className = 'card-container';
+    scheduleContainer.style.paddingTop = '40px'; 
+
+    const title = document.createElement('h2');
+    title.style.textAlign = 'center';
+    title.style.width = '100%';
+    title.style.color = '#ffffff'; 
+    title.style.textShadow = '2px 2px 10px rgba(0,0,0,0.5)';
+    title.innerText = currentSport === 'f1' ? '🏁 F1 當月賽程表' : '⚾ MLB 當月賽程表';
+    scheduleContainer.appendChild(title);
+
+    const listZone = document.createElement('div');
+    listZone.style.width = '100%';
+    listZone.innerHTML = '<p style="text-align:center; color: rgba(255,255,255,0.8);">最新賽程載入中...</p>';
+    scheduleContainer.appendChild(listZone);
+    
+    display.appendChild(scheduleContainer);
+
     fetch('data/schedule.json')
         .then(response => response.json())
         .then(data => {
-            const matches = data[sportType];
-            display.innerHTML = ''; // 清空載入中提示
+            const matches = data[currentSport]; 
+            listZone.innerHTML = ''; 
             
-            // 如果找不到資料
             if (!matches || matches.length === 0) {
-                display.innerHTML = '<p>目前沒有即將到來的賽事喔！</p>';
+                listZone.innerHTML = '<p style="text-align:center; color: rgba(255,255,255,0.8);">目前沒有即將到來的賽事喔！</p>';
                 return;
             }
 
-            // 跑迴圈把每一場比賽渲染成字卡
             matches.forEach(match => {
-                display.innerHTML += `
-                    <div class="card" style="border-left: 5px solid #18bc9c; margin-bottom: 15px; padding: 15px; background: #f8f9fa; border-radius: 4px;">
-                        <span style="font-size: 14px; color: #7f8c8d; font-weight: bold;">📅 比賽日期：${match.date}</span>
-                        <h3 style="margin: 8px 0;">${match.event}</h3>
-                        <p style="margin: 4px 0; font-size: 15px;">📍 <strong>比賽地點：</strong>${match.location}</p>
-                        <p style="margin: 4px 0; font-size: 15px; color: #e74c3c;">⏰ <strong>開賽時間：</strong>${match.time}</p>
+                listZone.innerHTML += `
+                    <div class="card" style="
+                        border-left: 5px solid var(--${currentSport}-color); 
+                        margin-bottom: 20px; 
+                        padding: 20px; 
+                        background: rgba(255, 255, 255, 0.1); 
+                        backdrop-filter: blur(12px); 
+                        -webkit-backdrop-filter: blur(12px); 
+                        border-top: 1px solid rgba(255, 255, 255, 0.2);
+                        border-right: 1px solid rgba(255, 255, 255, 0.1);
+                        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                        border-radius: 12px; 
+                        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+                        color: #ffffff;
+                    ">
+                        <span style="font-size: 14px; color: rgba(255, 255, 255, 0.6); font-weight: bold; letter-spacing: 1px;">📅 比賽日期：${match.date}</span>
+                        <h3 style="margin: 10px 0; color: #ffffff; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); font-size: 1.4rem;">${match.event}</h3>
+                        <p style="margin: 5px 0; font-size: 15px; color: rgba(255, 255, 255, 0.85);">📍 <strong>比賽地點：</strong>${match.location}</p>
+                        <p style="margin: 5px 0; font-size: 15px; color: #ff7675;">⏰ <strong>開賽時間：</strong>${match.time}</p>
                     </div>
                 `;
             });
         })
         .catch(err => {
             console.error("載入失敗：", err);
-            display.innerHTML = `<p style="color:red;">賽程表載入失敗，請檢查檔案路徑或重新整理。</p>`;
+            listZone.innerHTML = `<p style="color:#ff7675; text-align:center;">賽程表載入失敗，請檢查檔案路徑或重新整理。</p>`;
         });
 }
+
 function loadQuiz() {
     const display = document.getElementById('quiz-display');
     const title = document.getElementById('quiz-title');
     const categoryBtnContainer = document.getElementById('quiz-category-buttons');
+    if(!display || !title) return;
     
     const sportCategories = quizData[currentSport];
-    
     title.innerText = `🧠 ${currentSport === 'f1' ? '🏁 F1' : '⚾ MLB'} 測驗挑戰`;
 
-    // 1. 動態生成「種類選擇按鈕」
     categoryBtnContainer.innerHTML = '';
     for (let catKey in sportCategories) {
         const isBtnActive = currentQuizCategory === catKey;
@@ -555,7 +630,6 @@ function loadQuiz() {
         `;
     }
 
-    // 2. 🌟 關鍵修改：如果還沒選擇題目種類，顯示提示訊息，不跳出題目
     if (!currentQuizCategory || !sportCategories[currentQuizCategory]) {
         display.innerHTML = `
             <div class="card" style="text-align: center; padding: 40px; border-left: 5px solid #34495e;">
@@ -564,36 +638,22 @@ function loadQuiz() {
         return;
     }
 
-    // 3. 顯示選定種類對應的題目
     display.innerHTML = ''; 
-    userAnswers = {}; // 清空計分板
+    userAnswers = {}; 
 
-    // 🌟 1. 從 20 題庫中，隨機洗牌並抽出前 10 題
-    // 在 loadQuiz 裡
     const allQuestions = sportCategories[currentQuizCategory].questions;
-    current10Questions = shuffleArray(allQuestions).slice(0, 10); // 確保這行有在跑
+    current10Questions = shuffleArray(allQuestions).slice(0, 10); 
 
-    // 🌟 2. 顯示這 10 題，並將裡面的「選項」也洗牌
     current10Questions.forEach((item, index) => {
-        // 先把選項跟「它是不是正確答案」綁定在一起
-        let optionsWithState = item.options.map((opt, idx) => ({
-            text: opt,
-            isCorrect: idx === item.ans
-        }));
-        
-        // 把選項打亂
+        let optionsWithState = item.options.map((opt, idx) => ({ text: opt, isCorrect: idx === item.ans }));
         let shuffledOptions = shuffleArray(optionsWithState);
-        
-        // 找出打亂後，正確答案跑到第幾個位置了
         let newCorrectIndex = shuffledOptions.findIndex(o => o.isCorrect);
 
         let optionsHtml = '';
         shuffledOptions.forEach((optObj, optIdx) => {
-            // 這裡傳入的是打亂後的新正確位置 (newCorrectIndex)
             optionsHtml += `<button class="quiz-option q-${index}-opt-${optIdx}" onclick="checkAnswer(this, ${index}, ${optIdx}, ${newCorrectIndex})">${optObj.text}</button>`;
         });
 
-        // 修正：這裡應該是獨立的交卷按鈕，而不是重複的一張題目卡片
         display.innerHTML += `
             <div class="card ${currentSport}-card">
                 <h3>Q${index + 1}: ${item.q}</h3>
@@ -601,7 +661,6 @@ function loadQuiz() {
             </div>`;
     });
 
-    // 🌟 關鍵：這裡必須要在 forEach 迴圈之外，把按鈕加進去
     display.innerHTML += `
         <div style="text-align: center; margin-top: 40px; margin-bottom: 40px;">
             <button class="btn ${currentSport}-btn" onclick="showQuizResult()" style="font-size: 1.2rem; padding: 15px 40px; box-shadow: 0 8px 20px rgba(0,0,0,0.2);">
@@ -611,42 +670,32 @@ function loadQuiz() {
     `;
 }
 
-// 點擊分類按鈕時觸發的魔法
 function setQuizCategory(category) {
     currentQuizCategory = category;
-    loadQuiz(); // 點擊按鈕後，記錄選取的種類並重新渲染畫面
+    loadQuiz(); 
 }
 
 function checkAnswer(clickedBtn, qIdx, userChoice, correctChoice) {
-    // 檢查這題是否已經作答過，如果已經有紀錄，直接跳出 (鎖定功能)
-    if (userAnswers.hasOwnProperty(qIdx)) {
-        return; 
-    }
+    if (userAnswers.hasOwnProperty(qIdx)) return; 
 
-    // 撈出這一題包包裡面的所有選項按鈕
     const optionsGroup = clickedBtn.parentElement;
     const allOptions = optionsGroup.querySelectorAll('.quiz-option');
     
-    // 答題後鎖定該題所有選項的外觀
     allOptions.forEach(btn => {
         btn.style.cursor = 'not-allowed'; 
         btn.style.opacity = '0.7';
     });
 
-    // 判斷對錯
     if (userChoice === correctChoice) {
-        // 🟢 答對：自己變成綠色
         clickedBtn.style.backgroundColor = '#18bc9c';
         clickedBtn.style.color = 'white';
         clickedBtn.style.borderColor = '#18bc9c';
         clickedBtn.style.fontWeight = 'bold';
     } else {
-        // 🔴 答錯：自己變成紅色
         clickedBtn.style.backgroundColor = '#e74c3c';
         clickedBtn.style.color = 'white';
         clickedBtn.style.borderColor = '#e74c3c';
         
-        // 🟢 同時把正確答案亮綠色
         const correctBtn = optionsGroup.querySelector(`.q-${qIdx}-opt-${correctChoice}`);
         if (correctBtn) {
             correctBtn.style.backgroundColor = '#18bc9c';
@@ -655,25 +704,18 @@ function checkAnswer(clickedBtn, qIdx, userChoice, correctChoice) {
             correctBtn.style.fontWeight = 'bold';
         }
     }
-    
-    // 🌟 關鍵修正：必須在此處記錄該題答對與否 (true 或 false)
     userAnswers[qIdx] = (userChoice === correctChoice);
 }
 
-window.onload = () => setSport('f1');
-
-// ================= 結算成績與彈出視窗 =================
 function showQuizResult() {
-    const totalQuestions = 10; // 強制固定為 10 題
+    const totalQuestions = 10; 
     const answeredCount = Object.keys(userAnswers).length;
 
-    // 檢查作答進度
     if (answeredCount < totalQuestions) {
         alert(`⚠️ 你還有 ${totalQuestions - answeredCount} 題沒寫完喔！`);
         return;
     }
 
-    // 計算分數
     let correctCount = 0;
     for (let i = 0; i < totalQuestions; i++) {
         if (userAnswers[i] === true) correctCount++;
@@ -681,12 +723,10 @@ function showQuizResult() {
     let wrongCount = totalQuestions - correctCount;
     let score = (correctCount / totalQuestions) * 100;
 
-    // 取得評語
     let comment = score === 100 ? "🏆 太神啦！你是傳奇滿分大師！" :
                   score >= 60 ? "👏 表現不錯喔，繼續保持對體育的熱愛！" : 
                   "💪 再接再厲，多看歷史維基補充知識吧！";
 
-    // 建立或取得 Modal
     let modal = document.getElementById('quiz-modal');
     if (!modal) {
         modal = document.createElement('div');
@@ -695,7 +735,6 @@ function showQuizResult() {
         document.body.appendChild(modal);
     }
 
-    // 填入精緻化的內容
     modal.innerHTML = `
         <div class="modal-content">
             <h2>成績結算</h2>
@@ -716,8 +755,6 @@ function showQuizResult() {
         </button>
     </div>
 `;
-    
-    // 強制顯示
     modal.style.display = 'flex';
 }
 
@@ -725,7 +762,8 @@ function closeQuizResult() {
     const modal = document.getElementById('quiz-modal');
     if (modal) modal.style.display = 'none';
     
-    // 🌟 關鍵修改：把目前選取的分類清空，然後重新載入畫面
     currentQuizCategory = null;
     loadQuiz();
 }
+
+window.onload = () => setSport('f1');

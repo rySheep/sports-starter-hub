@@ -17,6 +17,36 @@
       "event": "🇦🇹 奧地利大獎賽 (Austrian GP)",
       "location": "紅牛賽道",
       "time": "台灣時間 21:00"
+    },
+    {
+      "date": "2026-07-05",
+      "event": "🇬🇧 英國大獎賽 (British GP)",
+      "location": "銀石賽道 (Silverstone)",
+      "time": "台灣時間 22:00"
+    },
+    {
+      "date": "2026-07-19",
+      "event": "🇭🇺 匈牙利大獎賽 (Hungarian GP)",
+      "location": "匈牙利賽道 (Hungaroring)",
+      "time": "台灣時間 21:00"
+    },
+    {
+      "date": "2026-07-26",
+      "event": "🇧🇪 比利時大獎賽 (Belgian GP)",
+      "location": "斯帕-弗朗科爾尚賽道 (Spa)",
+      "time": "台灣時間 21:00"
+    },
+    {
+      "date": "2026-08-30",
+      "event": "🇳🇱 荷蘭大獎賽 (Dutch GP)",
+      "location": "贊德沃特賽道 (Zandvoort)",
+      "time": "台灣時間 21:00"
+    },
+    {
+      "date": "2026-09-06",
+      "event": "🇮🇹 義大利大獎賽 (Italian GP)",
+      "location": "蒙札賽道 (Monza)",
+      "time": "台灣時間 21:00"
     }
   ],
   "mlb": [

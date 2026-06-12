@@ -45,12 +45,35 @@ body {
 .split:hover { flex: 1.2; }
 
 .left-f1 {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/verstappen.webp') center/cover;
+    background: url('./images/verstappen.webp') center/cover;
     color: white;
 }
 .right-mlb {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('./images/mlb.jpg') center/cover;
+    background: url('./images/mlb.jpg') center/cover;
     color: white;
+}
+
+/* 2. 新增：首頁背景的動態遮罩 (聚光燈特效) */
+.hero-section .split::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.75); /* 變暗時的深度 */
+    opacity: 0;                      /* 🌟 預設完全透明，保持最高亮度 */
+    z-index: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+/* 3. 🌟 當滑鼠碰到文字(.content)時，背景遮罩浮現 */
+.hero-section .split:has(.content:hover)::before {
+    opacity: 1;
+}
+
+/* 確保文字不會被遮罩蓋住 */
+.hero-section .split .content {
+    position: relative;
+    z-index: 2;
 }
 
 .content h1 { font-size: 3.5rem; margin-bottom: 10px; text-shadow: 2px 2px 5px rgba(0,0,0,0.5); }
@@ -92,7 +115,19 @@ body {
 
     scroll-snap-align: start;
 }
-.navbar .logo { font-size: 1.5rem; font-weight: bold; }
+/* === 導覽列 Logo 變回首頁按鈕 === */
+.navbar .logo { 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    cursor: pointer;      /* 🌟 滑鼠移過去變成點擊的手指圖案 */
+    transition: all 0.3s ease; /* 🌟 加上平滑過渡動畫 */
+}
+
+/* 🌟 滑鼠懸停時微微放大並發光，增加互動質感 */
+.navbar .logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
 .navbar button {
     background: #34495e; color: white; border: none;
     padding: 10px 15px; margin: 0 5px; border-radius: 4px; cursor: pointer;
@@ -118,8 +153,8 @@ body {
 }
 #main-content::-webkit-scrollbar { display: none; }
 
-/* 幫其他「不需要全螢幕」的內容重新加上置中與安全範圍 */
-#wiki-title,  #quiz-tab, #calendar-tab, .card-container {
+/* 幫其他「不需要全螢幕」的內容重新加上置中與安全範圍 (移除了 calendar-tab) */
+#wiki-title, #quiz-tab, .card-container {
     max-width: 1000px;
     margin: 0 auto;
     padding-left: 20px;
@@ -199,21 +234,32 @@ body {
     background-attachment: fixed; 
 }
 
-/* 🌟 漸層遮罩：左邊完全透明保留照片細節，右邊轉為深黑色襯托文字 */
+/* 🌟 漸層遮罩：預設隱藏，讓圖片全亮 */
 .story-slide::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
+    /* 保留你們設計的漸層方向 */
     background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 45%, rgba(0,0,0,0.9) 100%);
+    opacity: 0; /* 🌟 預設完全透明 */
     z-index: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+/* 🌟 當滑鼠移入文字框(.story-content)時，漸層遮罩才浮現 */
+.story-slide:has(.story-content:hover)::before {
+    opacity: 1;
 }
 
 /* === 調整文字區塊寬度與邊距 === */
+/* === 調整文字區塊寬度與邊距 (精準定位至右下角) === */
 .story-content {
-    position: relative;
+    position: absolute;  /* 🌟 從 relative 改成 absolute，脫離置中排版 */
+    bottom: 80px;        /* 🌟 距離底部 80px (剛好避開最底下的提示箭頭) */
+    right: 5vw;          /* 🌟 距離右側縮減為 5vw (比原本的 12vw 更往右靠) */
     z-index: 2;
-    max-width: 460px; /* 🌟 縮小文字區塊的最大寬度 (從 550px 降到 460px) */
-    margin-right: 12vw; /* 🌟 增加右側留白，讓畫面更有呼吸感 */
+    max-width: 480px;    /* 稍微放寬一點點，讓排版更自然 */
     text-align: left; 
     background: transparent; 
     backdrop-filter: none; 
@@ -354,26 +400,36 @@ body {
 .article-hub .split:hover { flex: 1.6; }
 
 /* 加上暗色漸層遮罩，確保文字清晰 */
+/* 加上暗色漸層遮罩，預設透明 */
 .article-hub .split::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+    background: rgba(0, 0, 0, 0.75);
+    opacity: 0; /* 🌟 預設透明 */
     z-index: 1;
-    transition: 0.4s ease;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
 }
-.article-hub .split:hover::before {
-    background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.8));
+
+/* 🌟 當滑鼠碰到文字(.content)時，背景變暗 */
+.article-hub .split:has(.content:hover)::before {
+    opacity: 1;
 }
 
 .article-hub .content { z-index: 2; position: relative; color: white; }
 .article-hub .content h2 { font-size: 3rem; margin-bottom: 10px; text-shadow: 2px 2px 10px rgba(0,0,0,0.8); }
 .article-hub .content p { font-size: 1.2rem; opacity: 0.8; }
 
-/* 背景圖片設定 (請確保你有這些本機圖片) */
+/* F1 科普專欄背景 */
 .bg-tech { background: url('./images/f1 tech.jpg') center/cover; }
 .bg-rules { background: url('./images/f1 rule.jpg') center/cover; }
 .bg-records { background: url('./images/f1 reco.jpg') center/cover; }
+
+/* 🌟 新增：MLB 科普專欄的三分割背景 */
+.bg-mlb-rules { background: url('./images/mlb charger.jpg') center/cover; }
+.bg-mlb-tech { background: url('./images/mlb player.jpg') center/cover; }
+.bg-mlb-records { background: url('./images/mlb rec.jpg') center/cover; }
 
 /* === 沉浸式頁面內的懸浮返回按鈕 === */
 .floating-back-btn {
